@@ -1,0 +1,30 @@
+{
+  "name": "ReminderService",
+  "version": "1.0.0",
+  "description": "Reminder Service for Airline Booking",
+  "main": "index.js",
+  "scripts": {
+    "start":"nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harshit-8080/ReminderService.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/harshit-8080/ReminderService/issues"
+  },
+  "homepage": "https://github.com/harshit-8080/ReminderService#readme",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "pg": "^8.8.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.28.0",
+    "sequelize-cli": "^6.5.2"
+  }
+}
