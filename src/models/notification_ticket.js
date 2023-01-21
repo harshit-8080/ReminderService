@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Notification_Ticket extends Model {
     /**
@@ -13,31 +11,35 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  Notification_Ticket.init({
-    subject: {
-      type:DataTypes.STRING,
-      allowNull:false,
+  Notification_Ticket.init(
+    {
+      subject: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      content: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      recepientEmail: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      status: {
+        type: DataTypes.ENUM,
+        allowNull: false,
+        values: ["PENDING", "SUCCESS", "FAILED"],
+        defaultValue: "PENDING",
+      },
+      notificationTime: {
+        type: DataTypes.DATE,
+        allowNull: false,
+      },
     },
-    content: {
-      type:DataTypes.STRING,
-      allowNull:false,
-    },
-    recepientEmail:{
-      type:DataTypes.STRING,
-      allowNull:false,
-    },
-    status:{
-      type:DataTypes.ENUM ,
-      allowNull:false,
-    },
-    notificationTime: {
-      type:DataTypes.DATE,
-      allowNull:false,
-      values:["PENDING","SUCCESS","FAILED"]
-    },
-  }, {
-    sequelize,
-    modelName: 'Notification_Ticket',
-  });
+    {
+      sequelize,
+      modelName: "Notification_Ticket",
+    }
+  );
   return Notification_Ticket;
 };
