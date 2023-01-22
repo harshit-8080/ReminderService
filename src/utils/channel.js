@@ -23,16 +23,20 @@ const publish = async (channel, binding_key, message) => {
   try {
     // ! assertQueue will check if given queue is there or not, it not it'll creates a new queue
     await channel.assertQueue(QUEUE_NAME);
+
     await channel.publish(EXCHANGE_NAME, binding_key, Buffer.from(message));
-  } catch (error) {}
+  } catch (error) {
+    throw error;
+  }
 };
 
-const subscribe = async (channel, binding_key, service) => {
+const subscribe = async (channel, binding_key, event) => {
   try {
     const applicationQueue = await channel.assertQueue(QUEUE_NAME);
-    channel.bindQueue(applicationQueue.queue, (msg) => {
-      console.log("received data");
-      console.log(msg.content.toString());
+    channel.bindQueue(applicationQueue.queue, EXCHANGE_NAME, binding_key);
+
+    channel.consume(applicationQueue.queue, (msg) => {
+      event(JSON.parse(msg.content.toString()));
       channel.ack(msg);
     });
   } catch (error) {
