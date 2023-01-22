@@ -10,7 +10,7 @@ const { subscribe } = require("./services/reminder.service.js");
 const setupAndStartServer = async (req, res) => {
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
-  app.use(remainderRouter);
+  app.use("/reminder", remainderRouter);
   await subscribe();
 
   app.listen(PORT, (req, res) => {
