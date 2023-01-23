@@ -36,6 +36,7 @@ const subscribe = async (channel, binding_key, event) => {
     channel.bindQueue(applicationQueue.queue, EXCHANGE_NAME, binding_key);
 
     channel.consume(applicationQueue.queue, (msg) => {
+      console.log(msg.content.toString());
       event(JSON.parse(msg.content.toString()));
       channel.ack(msg);
     });
