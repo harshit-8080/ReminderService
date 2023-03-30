@@ -8,6 +8,6 @@ remainderRouter.get("/test", (req, res) => {
     response: "from reminder service",
   });
 });
-remainderRouter.post("/tickets", remainderController.create);
+// remainderRouter.post("/tickets", remainderController.create);
 
 module.exports = remainderRouter;
